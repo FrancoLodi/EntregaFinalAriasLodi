@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>PreEntrega 2 - Arias Lodi</title>
+</head>
+<body>
+    <h1 class="titulo-tienda">Tienda de Zapatillas</h1>
+
+    <h2 class="titulo-productos">Productos</h2>
+    <div id="contenedor-productos" class="grilla-productos"></div>
+
+    <h2 class="titulo-carrito">Carrito</h2>
+    <div id="contenedor-carrito"></div>
+    <p id="total-carrito"></p>
+
+    <h2 class="titulo-entrega">Datos de Entrega</h2>
+    <form id="formulario" class="formulario">
+
+        <div class="formulario-dato">
+            <label for="entrega">Método de entrega</label>
+            <select name="entrega" id="entrega">
+                <option value="Placeholder">Seleccione metodo de entrega</option>
+                <option value="Retiro del local">Retiro del local</option>
+                <option value="Envio a domicilio">Envio a domicilio</option> 
+            </select>
+        </div>
+        
+        <div class="formulario-dato">
+            <label for="nombreCompleto">Nombre y Apellido</label>
+            <input type="text" name="nombreCompleto" id="nombreCompleto">
+        </div>
+
+        <div class="formulario-dato">
+            <label for="email">E-Mail</label>
+        <input type="email" name="email" id="email">
+        </div>
+
+        <div class="formulario-dato">
+            <label for="telefono">Telefono</label>
+            <input type="tel" name="telefono" id="telefono">
+        </div>
+
+        <div class="formulario-dato">
+            <label for="pago">Forma de pago</label>
+            <select name="pago" id="pago">
+                <option value="Placeholder">Seleccione forma de pago</option>
+                <option value="Tarjeta de debito">Tarjeta de débito</option>
+                <option value="Tarjeta de credito">Tarjeta de crédito</option>
+                <option value="Transferencia bancaria">Transferencia bancaria</option>
+                <option value="Pago en efectivo">Pago en efectivo</option> 
+            </select>
+        </div>
+
+        <input type="submit" value="Enviar" id="enviar">
+
+    </form>
+
+    <div id="contenedor-resumen"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

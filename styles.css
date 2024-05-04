@@ -1,0 +1,88 @@
+.titulo-tienda{
+    text-align: center;
+    margin-bottom: -16px;
+}
+
+.titulo-productos, .titulo-carrito, .titulo-entrega, .titulo-resumen{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.grilla-productos{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.grilla-productos #tarjeta-producto{
+    border: 2px solid black;
+}
+
+.producto-imagen{
+    width: 150px;
+}
+
+.producto-detalles{
+    margin-left: 10px;
+}
+
+.producto-cantidad{
+    display: flex;
+    gap: 16px;
+}
+
+.boton-agregar-carrito{
+    padding: 8px 23px;
+}
+
+.producto-detalles-carrito{
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    border: 1px solid gray;
+}
+
+.producto-detalles-carrito .producto-carrito-cantidad{
+    display: flex;
+    gap: 10px;
+}
+
+#total-carrito{
+    text-align: center;
+    font-weight: bold;
+}
+
+.formulario{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.formulario .formulario-dato{
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.resumen-carrito{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.resumen-entrega{
+    border-top: 1px solid gray;
+    text-align: center;
+}
+
+.resumen-total{
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.botones-cancelar-y-confirmar{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
