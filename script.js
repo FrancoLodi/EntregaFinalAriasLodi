@@ -356,7 +356,7 @@ const botonesFinales = () =>{
             ) {
                 botonCancelarSweetAlert.fire({
                 title: "Cancelado",
-                text: "Volviendo atras.",
+                text: "Volviendo atrás.",
                 icon: "error"
                 })
             }
@@ -401,7 +401,7 @@ const botonesFinales = () =>{
             ) {
                 botonConfirmarSweetAlert.fire({
                 title: "Compra cancelada",
-                text: "Volviendo atras.",
+                text: "Volviendo atrás.",
                 icon: "error"
                 })
             }
