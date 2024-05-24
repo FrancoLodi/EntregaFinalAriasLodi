@@ -38,11 +38,11 @@ const cargarProducto = (elemento) =>{
                                     </div>
                                     <div class="producto-cantidad">
                                         <button id=${producto.id} class="boton-restar-cantidad">-</button>
-                                        <p id="cantidad-productos-${producto.id}">Cantidad: ${producto.cantidad}</p>
+                                        <p id="cantidad-productos-${producto.id}" class="producto-cantidad-texto">Cantidad: ${producto.cantidad}</p>
                                         <button id=${producto.id} class="boton-sumar-cantidad">+</button>
                                     </div>
                                     <div class="producto-boton-agregar">
-                                        <button id=${producto.id} class="boton-agregar-carrito">Agregar a carrito</button>
+                                        <button id=${producto.id} class="boton-agregar-carrito">AGREGAR A CARRITO</button>
                                     </div>
                                     `
         contenedorProductos.appendChild(tarjetaProducto)
@@ -260,8 +260,12 @@ console.log(contenedorResumen)
 const cargarTituloResumen = () =>{
     const tituloResumen = document.createElement("h2")
     tituloResumen.setAttribute("class", "titulo-resumen")
-    tituloResumen.innerText = "Resumen de compra"
+    tituloResumen.innerText = "RESUMEN DE COMPRA"
     contenedorResumen.appendChild(tituloResumen)
+    const subtituloResumenCarrito = document.createElement("p")
+    subtituloResumenCarrito.setAttribute("class", "resumen-subtitulo-carrito")
+    subtituloResumenCarrito.innerText = "CARRITO"
+    contenedorResumen.appendChild(subtituloResumenCarrito)
 }
 
 // funcion cargar resumen carrito
@@ -286,6 +290,7 @@ const cargarResumenEntrega = (elemento) =>{
         resumenEntrega.setAttribute("class", "resumen-entrega")
         resumenEntrega.innerHTML = `
                             <div>
+                                <p class="resumen-subtitulo-entrega">DATOS DE ENTREGA</p>
                                 <p>Método de entrega: ${dato.entrega}</p>
                                 <p>Nombre Completo: ${dato.nombreCompleto}</p>
                                 <p>Email: ${dato.email}</p>
@@ -310,8 +315,8 @@ const botonesFinales = () =>{
     const contenedorBotones = document.createElement("div")
     contenedorBotones.setAttribute("class", "botones-cancelar-y-confirmar")
     contenedorBotones.innerHTML = `
-                                <button class="boton-final-cancelar">Cancelar</button>
-                                <button class="boton-final-confirmar">Confirmar</button>
+                                <button class="boton-final-cancelar">CANCELAR</button>
+                                <button class="boton-final-confirmar">CONFIRMAR</button>
                                 `
     contenedorResumen.appendChild(contenedorBotones)
     // boton Cancelar
