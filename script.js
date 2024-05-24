@@ -1,53 +1,29 @@
-// PreEntrega 2 - Arias Lodi - JavaScript Coderhouse
+// Entrega final - Arias Lodi - JavaScript Coderhouse
 
+let productos = []
 let total = 0
 let carrito = []
 const submits = []
 
-// Productos
-const productos = [
-    {
-        id:1,
-        nombre: "Adidas Superstar",
-        precio: 85000,
-        imagen: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/7ed0855435194229a525aad6009a0497_9366/Scarpe_Superstar_Bianco_EG4958_01_standard.jpg",
-        cantidad: 1
-    },
-    {
-        id:2,
-        nombre: "Nike Jordan",
-        precio: 300000,
-        imagen: "https://nikeclprod.vtexassets.com/arquivos/ids/877292-800-800?v=638345737419700000&width=800&height=800&aspect=true",
-        cantidad: 1
-    },
-    {
-        id:3,
-        nombre: "Topper Lona",
-        precio: 47000,
-        imagen: "https://www.opensports.com.ar/media/catalog/product/cache/4769e4d9f3516e60f2b4303f8e5014a8/8/8/88030_0_21.jpg",
-        cantidad: 1
-    },
-    {
-        id:4,
-        nombre: "New Balance",
-        precio: 90000,
-        imagen: "https://nb.scene7.com/is/image/NB/mr530sg_nb_02_i?$pdpflexf2$&wid=440&hei=440",
-        cantidad: 1
-    },
-    {
-        id:5,
-        nombre: "LeCoq Sportif",
-        precio: 70500,
-        imagen: "https://tiendasmultisports.com/11527-large_default/tenis-le-coq-sportif-r850-hombre-2310202.jpg",
-        cantidad: 1
-    }
-]
-
-console.table(productos)
-
 // Seleccionar contenedor productos
 const contenedorProductos = document.querySelector("#contenedor-productos")
 console.log(contenedorProductos)
+
+// Importar productos de json
+async function importarProductos() {
+    try {
+        const response = await fetch('productos.json')
+        if (!response.ok) {
+        throw new Error('No se pudo importar los datos del archivo json')
+    }
+        productos = await response.json()
+        cargarProducto(productos)
+    } catch (error) {
+        console.error('Hubo un problema con fetch:', error)
+    }
+}
+
+console.table(productos)
 
 // Cargar tarjeta de producto
 const cargarProducto = (elemento) =>{
@@ -341,33 +317,94 @@ const botonesFinales = () =>{
     // boton Cancelar
     const botonCancelar = document.querySelector(".boton-final-cancelar")
     botonCancelar.addEventListener("click", ()=>{
-        const vaciarCarrito = confirm('¿Desea cancelar la compra y vaciar el carrito?')
-        if (vaciarCarrito){
-            alert("Compra cancelada.")
-            // vacia carrito y submits
-            carrito = []
-            submits.pop()
-            // limpiar pantalla
-            mostrarCarrito(carrito)
-            contenedorResumen.innerHTML = ""
-        }
+        // Sweet Alert Cancelar
+        const botonCancelarSweetAlert = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        botonCancelarSweetAlert.fire({
+            title: "¿Vaciar carrito?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Si, vaciar",
+            cancelButtonText: "No, volver",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Confirmacion Vaciar carrito
+                botonCancelarSweetAlert.fire({
+                    title: "¡Carrito vaciado!",
+                    icon: "success"
+                });
+                // vaciar carrito y submits
+                carrito = []
+                submits.pop()
+                // limpia pantalla
+                mostrarCarrito(carrito)
+                contenedorResumen.innerHTML = ""
+            } else if (
+                // Cancelar vaciar carrito
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                botonCancelarSweetAlert.fire({
+                title: "Cancelado",
+                text: "Volviendo atras.",
+                icon: "error"
+                })
+            }
+        })
     })
     // boton Confirmar
     const botonConfirmar = document.querySelector(".boton-final-confirmar")
     botonConfirmar.addEventListener("click", ()=>{
-        const confirmarCompra = confirm('¿Desea confirmar la compra?')
-        if (confirmarCompra){
-            alert("Compra confirmada.\nGracias por su compra.")
-            // vaciar carrito y submits
-            carrito = []
-            submits.pop()
-            // limpia pantalla
-            mostrarCarrito(carrito)
-            contenedorResumen.innerHTML = ""
-        }
+        // Sweet alert confirm
+        const botonConfirmarSweetAlert = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        botonConfirmarSweetAlert.fire({
+            title: "¿Confirmar compra?",
+            text: `TOTAL: $${total}`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Confirmar y pagar",
+            cancelButtonText: "Cancelar y volver",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Compra realizada
+                botonConfirmarSweetAlert.fire({
+                    title: "¡Compra exitosa!",
+                    text: "Gracias por elegirnos.",
+                    icon: "success"
+                });
+                // vaciar carrito y submits
+                carrito = []
+                submits.pop()
+                // limpia pantalla
+                mostrarCarrito(carrito)
+                contenedorResumen.innerHTML = ""
+            } else if (
+                // Compra cancelada
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                botonConfirmarSweetAlert.fire({
+                title: "Compra cancelada",
+                text: "Volviendo atras.",
+                icon: "error"
+                })
+            }
+        })
     })
 }
 
+importarProductos()
 cargarProducto(productos)
 cargarCarritoStorage()
 mostrarCarrito(carrito)

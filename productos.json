@@ -1,0 +1,37 @@
+[
+    {
+        "id":1,
+        "nombre": "Adidas Superstar",
+        "precio": 85000,
+        "imagen": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/7ed0855435194229a525aad6009a0497_9366/Scarpe_Superstar_Bianco_EG4958_01_standard.jpg",
+        "cantidad": 1
+    },
+    {
+        "id":2,
+        "nombre": "Nike Jordan",
+        "precio": 300000,
+        "imagen": "https://nikeclprod.vtexassets.com/arquivos/ids/877292-800-800?v=638345737419700000&width=800&height=800&aspect=true",
+        "cantidad": 1
+    },
+    {
+        "id":3,
+        "nombre": "Topper Lona",
+        "precio": 47000,
+        "imagen": "https://www.opensports.com.ar/media/catalog/product/cache/4769e4d9f3516e60f2b4303f8e5014a8/8/8/88030_0_21.jpg",
+        "cantidad": 1
+    },
+    {
+        "id":4,
+        "nombre": "New Balance",
+        "precio": 90000,
+        "imagen": "https://nb.scene7.com/is/image/NB/mr530sg_nb_02_i?$pdpflexf2$&wid=440&hei=440",
+        "cantidad": 1
+    },
+    {
+        "id":5,
+        "nombre": "LeCoq Sportif",
+        "precio": 70500,
+        "imagen": "https://tiendasmultisports.com/11527-large_default/tenis-le-coq-sportif-r850-hombre-2310202.jpg",
+        "cantidad": 1
+    }
+]
